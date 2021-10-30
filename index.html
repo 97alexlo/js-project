@@ -1,0 +1,98 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script>
+            var timer = null
+            onload = function start() {
+                var textBox = document.createElement("input")
+                textBox.type = "text"
+                textBox.id = "textbox"
+                textBox.className = "center"
+                document.body.appendChild(textBox)
+                document.body.appendChild(document.createElement("br"))
+                var button = document.createElement("button")
+                button.innerText = "Submit"
+                button.onclick = checkStorage
+                document.body.appendChild(document.createElement("br"))
+                document.body.appendChild(button)
+            }
+            function checkStorage() {
+                if(document.getElementById("textbox").value.toLowerCase() === "storage") {
+                    var hyperlink = document.createElement("a")
+                    document.body.appendChild(document.createElement("br"))
+                    hyperlink.text = "to storage.html"
+                    hyperlink.href = "storage.html"
+                    hyperlink.className = "center"
+                    document.body.appendChild(hyperlink)
+                }
+                else if(document.getElementById("textbox").value.toLowerCase() === "alien") {
+                    createAlien()
+                }
+            }
+            function createAlien() { 
+                var box = document.createElement("div")
+                box.id = "box"
+                box.style.height = "300px"
+                box.style.width = "500px"
+                box.style.border = "2px solid black"
+                box.style.position = "relative"
+                var alien = document.createElement("img")
+                alien.id = "alien"
+                alien.style.position = "absolute"
+                alien.style.left = 0
+                alien.style.bottom = 0
+                alien.src = "/images/alien/alienrwalk0.gif"
+                document.body.appendChild(document.createElement("br"))
+                box.appendChild(alien)
+                document.body.appendChild(document.createElement("br"))
+                document.body.appendChild(box)
+                console.log(document.getElementById("alien").style.left)
+                if(document.getElementById("textbox").value.toLowerCase() === "move") {
+                        toggleMove()
+                    }
+            }
+            function toggleMove() {
+                if(timer == null) {
+                    timer = window.setInterval(move, 30)
+                }
+                else {
+                    clearInterval(timer)
+                    timer = null
+                }
+            }
+            function move() {
+                let alien = document.getElementById("alien")
+                step()
+                alien.style.left = parseInt(a.style.left) + 1 + "px"
+            }
+            function step()
+            {
+                stepNumber++
+                stepNumber = stepNumber % 30
+                a.src = "images/alien/alienrwalk" + stepNumber + ".gif"
+            }
+
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>
