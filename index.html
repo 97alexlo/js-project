@@ -57,13 +57,17 @@
             }
             function toggleAlien() {
                 var input = document.getElementById("textbox").value.toLowerCase()
+                var alien = document.getElementById("alien")
+                var box = document.getElementById("box")
+                alien.style.display = ""
+                box.style.display = ""
                 if(input === "walk") {
                     if(timer == null) {
                         timer = window.setInterval(move, 100)
                     }
                     else {
                         clearInterval(timer)
-                        timer = null
+                        timer = window.setInterval(move, 100)
                     }
                 }
                 else if(input === "run") {
@@ -72,8 +76,18 @@
                     }
                     else {
                         clearInterval(timer)
-                        timer = null
+                        timer = window.setInterval(move, 10)
                     }
+                }
+                else if(input === "stop") {
+                    clearInterval(timer)
+                    timer = null
+                }
+                else if(input === "bye") {
+                    clearInterval(timer)
+                    timer = null
+                    alien.style.display = "none"
+                    box.style.display = "none"
                 }
             }
             function move() {
@@ -83,7 +97,6 @@
                     stepRight()
                     alien.style.left = parseInt(alien.style.left) + 1 + "px"
                     if(parseInt(alien.style.left) >= (parseInt(box.style.width) - parseInt(alien.width))) {
-                        console.log("turned right")
                         rightDirection = 0
                         stepNumber = 0
                     }
