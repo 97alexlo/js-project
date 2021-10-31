@@ -2,6 +2,10 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <script
+        src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
         <script>
             var timer = null
             var stepNumber = 0
@@ -30,12 +34,35 @@
                     hyperlink.className = "center"
                     document.body.appendChild(hyperlink)
                 }
+                else if(input == "jquery") {
+                    jquery()
+                }
                 else if(input === "alien" && alien === null) {
                     createAlien()
                 }
                 else if(alien !== null) {
                     toggleAlien()
                 }
+            }
+            function jquery() {
+                var d = document.createElement("img")
+                d.src = "/images/letters/d.png"
+                var o = document.createElement("img")
+                o.src = "/images/letters/o.png"
+                var g = document.createElement("img")
+                g.src = "/images/letters/g.png"
+                var s = document.createElement("img")
+                s.src = "/images/letters/s.png"
+                document.body.appendChild(document.createElement("br"))
+                document.body.appendChild(d)
+                document.body.appendChild(d)
+                document.body.appendChild(o)
+                document.body.appendChild(g)
+                document.body.appendChild(s)
+                $("img").css("width", "200px")
+                $(document).on('click','img:eq(1)', function() {
+                    $(this).css("border", "5px solid red")
+                });
             }
             function createAlien() { 
                 var box = document.createElement("div")
