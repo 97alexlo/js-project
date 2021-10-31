@@ -2,10 +2,8 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <script
-        src="https://code.jquery.com/jquery-3.6.0.js"
-        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-        crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <link href="lightbox.css" rel="stylesheet" />
         <script>
             var timer = null
             var stepNumber = 0
@@ -34,8 +32,15 @@
                     hyperlink.className = "center"
                     document.body.appendChild(hyperlink)
                 }
-                else if(input == "jquery") {
+                else if(input === "jquery") {
                     jquery()
+                }
+                else if(input === "plugin") {
+                    var toPlugin = document.createElement("a")
+                    toPlugin.text = "Go to plugin page"
+                    toPlugin.href = "/plugin.html/"
+                    document.body.appendChild(document.createElement("br"))
+                    document.body.appendChild(toPlugin)
                 }
                 else if(input === "alien" && alien === null) {
                     createAlien()
@@ -45,6 +50,8 @@
                 }
             }
             function jquery() {
+                var jqueryDiv = document.createElement("div")
+                jqueryDiv.className = "jqueryDiv"
                 var d = document.createElement("img")
                 d.src = "/images/letters/d.png"
                 var o = document.createElement("img")
@@ -53,14 +60,15 @@
                 g.src = "/images/letters/g.png"
                 var s = document.createElement("img")
                 s.src = "/images/letters/s.png"
-                document.body.appendChild(document.createElement("br"))
-                document.body.appendChild(d)
-                document.body.appendChild(d)
-                document.body.appendChild(o)
-                document.body.appendChild(g)
-                document.body.appendChild(s)
-                $("img").css("width", "200px")
-                $(document).on('click','img:eq(1)', function() {
+                jqueryDiv.appendChild(document.createElement("br"))
+                jqueryDiv.appendChild(d)
+                jqueryDiv.appendChild(d)
+                jqueryDiv.appendChild(o)
+                jqueryDiv.appendChild(g)
+                jqueryDiv.appendChild(s)
+                document.body.appendChild(jqueryDiv)
+                $(".jqueryDiv img").css("width", "200px")
+                $(document).on('click','.jqueryDiv img:eq(1)', function() {
                     $(this).css("border", "5px solid red")
                 });
             }
@@ -151,10 +159,9 @@
                 stepNumber = stepNumber % 30
                 alien.src = "images/alien/alienlwalk" + stepNumber + ".gif"
             }
-
         </script>
     </head>
     <body>
-        
+        <script src="lightbox.js"></script>
     </body>
 </html>

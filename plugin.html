@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        onload = function() {
+            var dogLink = document.createElement("a")
+            dogLink.href = "images/dog.jpg"
+            dogLink.id = "dogLink"
+            dogLink.setAttribute('data-lightbox', "dog-image")
+            dogLink.setAttribute('data-caption', "here is a dog")
+            var dog = document.createElement("img")
+            dog.src = "images/dog.jpg"
+            dog.style.height = "50%"
+            dog.style.width = "50%"
+            dogLink.appendChild(dog)
+            document.body.appendChild(document.createElement("br"))
+            document.body.appendChild(dogLink)
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
