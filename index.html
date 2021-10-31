@@ -3,7 +3,6 @@
     <head>
         <meta charset="UTF-8">
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-        <link href="lightbox.css" rel="stylesheet" />
         <script>
             var timer = null
             var stepNumber = 0
@@ -38,7 +37,7 @@
                 else if(input === "plugin") {
                     var toPlugin = document.createElement("a")
                     toPlugin.text = "Go to plugin page"
-                    toPlugin.href = "/plugin.html/"
+                    toPlugin.href = "plugin.html"
                     document.body.appendChild(document.createElement("br"))
                     document.body.appendChild(toPlugin)
                 }
