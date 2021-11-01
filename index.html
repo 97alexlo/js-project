@@ -41,12 +41,59 @@
                     document.body.appendChild(document.createElement("br"))
                     document.body.appendChild(toPlugin)
                 }
+                else if(input === "ajax") {
+                    ajax()
+                }
+                else if(input === "alphabet") { 
+                    alphabet()
+                }
                 else if(input === "alien" && alien === null) {
                     createAlien()
                 }
                 else if(alien !== null) {
                     toggleAlien()
                 }
+            }
+            function alphabet() {
+                document.body.appendChild(document.createElement("br"))
+                for(let i = 'z'.charCodeAt(0); i >= 'a'.charCodeAt(0); i--)
+                {
+                    var letter = String.fromCharCode(i) // 'a', 'b', etc
+
+                    var im = document.createElement('img')
+                    im.className = "letter"
+                    im.id = letter
+                    im.style.width = "40px"
+                    im.src = "images/letters/" + letter + ".png"
+                    im.onclick = function() {
+                        var letters = document.getElementsByClassName("letter")
+                        for(let i = 0; i < letters.length; i++) {
+                            letters[i].src = this.src
+                        }
+                    }
+                    document.body.appendChild(im)
+                }
+            }
+            function ajax() {
+                var req = new XMLHttpRequest()
+                var advice = document.createElement("h1")
+                req.onreadystatechange = function() {
+                    if(req.readyState == 4) {
+                        if(req.status == 200) {
+                            const arr = JSON.parse(req.responseText.toUpperCase())
+                            for(let i = 0; i < arr.length - 1; i++) {
+                                advice.innerHTML += arr[i] + " "
+                            }
+                            advice.innerHTML += arr[arr.length - 1]
+                        }
+                        else {
+                            alert("error " + req.status)
+                        }
+                    }
+                }
+                req.open("GET", "advice.txt", true)
+                req.send(null)
+                document.body.appendChild(advice)
             }
             function jquery() {
                 var jqueryDiv = document.createElement("div")
