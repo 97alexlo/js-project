@@ -4,10 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        button {
+            padding: 7px;
+            height: 40px;
+            border-radius: 8px;
+            margin: 2px;
+        }
+        div {
+            font-family: 'Courier New', Courier, monospace;
+            padding: 2px;
+            
+        }
+    </style>
     <script>
         onload = function() {
             document.getElementById("setItem").onclick = function() {
                 localStorage.setItem("crypto", "bitcoin")
+            }
+            document.getElementById("setItem2").onclick = function() {
+                localStorage.setItem("name", "ting")
+            }
+            document.getElementById("getAllItems").onclick = function() {
+                for(let i = 0; i < localStorage.length; i++) {
+                    var key = localStorage.key(i)
+                    var value = localStorage.getItem(key)
+                    document.getElementById("allItems").innerHTML += `${key}: ${value}<br>`
+                }
             }
             document.getElementById("getItem").onclick = function() {
                 document.getElementById("getItemResult").innerHTML += localStorage.getItem("crypto")
@@ -39,15 +62,22 @@
     <ol>
         <li><code>setItem(): </code>Add a key and value (both strings) to <code>localStorage</code>. If the value is a number, it will be converted to a string</li>
         <button type="button" id="setItem"><code>localStorage.setItem("crypto", "bitcoin")</code></button>
+        <button type="button" id="setItem2"><code>localStorage.setItem("name", "ting")</code></button>
+        <button type="button" id="getAllItems"><code>Show all items in localStorage</code></button>
+        <div id="allItems">Result: <br></div>
+        <br>
         <li><code>key(): </code>Retrieve a key from <code>localStorage</code> by passing in a number</li>
         <button type="button" id="firstKey"><code>localStorage.key(0)</code></button>
         <div id="getItemResultFromKey">Result: </div>
+        <br>
         <li><code>getItem(): </code>Retrieve a value from <code>localStorage</code> by passing in a key</li>
         <button type="button" id="getItem"><code>localStorage.getItem("crypto")</code></button>
         <div id="getItemResult">Result: </div>
+        <br>
         <li><code>removeItem(): </code>Remove an item by passing in a key from <code>localStorage</code></li>
         <button type="button" id="removeItem"><code>localStorage.removeItem("crypto")</code></button>
         <div id="getItemResultAfterRemove">Result: </div>
+        <br>
         <li><code>clear(): </code>Clear all data in <code>localStorage</code></li>
         <button type="button" id="clear"><code>localStorage.Clear()</code></button>
         <div id="getItemResultAfterClear">Result: </div>
