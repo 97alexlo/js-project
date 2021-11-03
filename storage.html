@@ -6,12 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
         onload = function() {
-
+            document.getElementById("setItem").onclick = function() {
+                localStorage.setItem("crypto", "bitcoin")
+            }
+            document.getElementById("getItem").onclick = function() {
+                document.getElementById("getItemResult").innerHTML += localStorage.getItem("crypto")
+            }
+            document.getElementById("removeItem").onclick = function() {
+                localStorage.removeItem("crypto")
+                document.getElementById("getItemResultAfterRemove").innerHTML += localStorage.getItem("crypto")
+            }
+            document.getElementById("clear").onclick = function() {
+                localStorage.clear()
+                document.getElementById("getItemResultAfterClear").innerHTML += localStorage.getItem("crypto")
+                document.getElementById("getLength").innerHTML += localStorage.length
+            }
+            document.getElementById("firstKey").onclick = function() {
+                document.getElementById("getItemResultFromKey").innerHTML += localStorage.key(0)
+            }
         }
     </script>
 </head>
 <body>
-    <h1>Window.localStorage</h1>
-    <p>localStorage is one of the two mechanisms of the Web Storage API. It allows JavaScript websites to save key-value pairs (both as strings) in a browser without an expiration date, even after the page is closed. In google chrome and firefox, localStorage is stored in an SQLite file in the user's profile folder. </p>
+    <h1><code>Window.localStorage</code></h1>
+    <ul>
+        <li><code>localStorage</code> is one of the two mechanisms of the Web Storage API</li>
+        <li>It allows JavaScript websites to save key-value pairs (both as strings) in a browser's memory even after the page is closed</li>
+        <li>In google chrome and firefox, <code>localStorage</code> is stored in an SQLite file in the user's profile folder</li>
+        <li>It is a read-only property window interface thats allowas the user to access a Storage object which can be used to access the document's origin local storage space</li>
+    </ul>
+    <p><code>localStorage</code>  can be used with the following methods:<br></p>
+    <ol>
+        <li><code>setItem(): </code>Add a key and value (both strings) to <code>localStorage</code>. If the value is a number, it will be converted to a string</li>
+        <button type="button" id="setItem"><code>localStorage.setItem("crypto", "bitcoin")</code></button>
+        <li><code>key(): </code>Retrieve a key from <code>localStorage</code> by passing in a number</li>
+        <button type="button" id="firstKey"><code>localStorage.key(0)</code></button>
+        <div id="getItemResultFromKey">Result: </div>
+        <li><code>getItem(): </code>Retrieve a value from <code>localStorage</code> by passing in a key</li>
+        <button type="button" id="getItem"><code>localStorage.getItem("crypto")</code></button>
+        <div id="getItemResult">Result: </div>
+        <li><code>removeItem(): </code>Remove an item by passing in a key from <code>localStorage</code></li>
+        <button type="button" id="removeItem"><code>localStorage.removeItem("crypto")</code></button>
+        <div id="getItemResultAfterRemove">Result: </div>
+        <li><code>clear(): </code>Clear all data in <code>localStorage</code></li>
+        <button type="button" id="clear"><code>localStorage.Clear()</code></button>
+        <div id="getItemResultAfterClear">Result: </div>
+        <div id="getLength"><code>localStorage.length: </code>  </div>
+    </ol>
 </body>
 </html>
